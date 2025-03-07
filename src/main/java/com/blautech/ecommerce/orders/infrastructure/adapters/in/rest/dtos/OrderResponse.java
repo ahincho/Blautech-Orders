@@ -1,9 +1,8 @@
-package com.blautech.ecommerce.orders.domain.models;
+package com.blautech.ecommerce.orders.infrastructure.adapters.in.rest.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -13,12 +12,10 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Order {
-    @EqualsAndHashCode.Include
+public class OrderResponse {
     private String id;
-    private Long userId;
-    private Set<Detail> details;
+    private UserResponse user;
+    private Set<DetailResponse> details;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

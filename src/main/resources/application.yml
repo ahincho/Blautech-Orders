@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: Orders Microservice
+  profiles:
+    active: ${SPRING_PROFILE:dev}

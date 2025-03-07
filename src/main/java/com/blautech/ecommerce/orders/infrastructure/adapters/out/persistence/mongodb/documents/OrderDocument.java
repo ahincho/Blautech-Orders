@@ -1,10 +1,13 @@
-package com.blautech.ecommerce.orders.domain.models;
+package com.blautech.ecommerce.orders.infrastructure.adapters.out.persistence.mongodb.documents;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -14,11 +17,13 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Order {
+@Document(collection = "orders")
+public class OrderDocument {
+    @Id
     @EqualsAndHashCode.Include
     private String id;
     private Long userId;
-    private Set<Detail> details;
+    private Set<DetailDocument> details;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }
