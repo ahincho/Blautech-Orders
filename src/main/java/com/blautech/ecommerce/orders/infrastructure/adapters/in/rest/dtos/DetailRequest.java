@@ -18,7 +18,7 @@ public class DetailRequest {
     @NotNull(message = "Product id is required")
     @Positive(message = "Product id must be a positive integer")
     @EqualsAndHashCode.Include
-    private Integer productId;
+    private Long productId;
     @NotNull(message = "Quantity is required")
     @Positive(message = "Quantity must be a positive integer")
     private Integer quantity;

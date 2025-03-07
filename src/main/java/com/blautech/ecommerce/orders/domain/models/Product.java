@@ -12,7 +12,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Product {
-    private Integer id;
+    private Long id;
     private String name;
-    private String price;
+    private String description;
+    private Double price;
 }

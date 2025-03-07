@@ -13,6 +13,6 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class DetailDocument {
     @EqualsAndHashCode.Include
-    private Integer productId;
+    private Long productId;
     private Integer quantity;
 }
