@@ -9,6 +9,9 @@ import com.blautech.ecommerce.orders.infrastructure.adapters.out.persistence.mon
 import com.blautech.ecommerce.orders.infrastructure.adapters.out.persistence.mongodb.repositories.OrderMongoRepository;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Repository
 public class OrderMongoDbPersistenceAdapter implements OrderPersistencePort {
@@ -17,9 +20,10 @@ public class OrderMongoDbPersistenceAdapter implements OrderPersistencePort {
         this.orderMongoRepository = orderMongoRepository;
     }
     @Override
+    @Transactional
     public Order createOneOrder(Order order) {
         OrderDocument orderDocument = OrderMongoDbMapper.domainToDocument(order);
-        OrderDocument savedOrderDocument = orderMongoRepository.save(orderDocument);
+        OrderDocument savedOrderDocument = this.orderMongoRepository.save(orderDocument);
         return OrderMongoDbMapper.documentToDomain(savedOrderDocument);
     }
     @Override
@@ -27,7 +31,8 @@ public class OrderMongoDbPersistenceAdapter implements OrderPersistencePort {
         return null;
     }
     @Override
-    public Order findOneOrderById(String id) {
-        return null;
+    public Optional<Order> findOneOrderById(String id) {
+        Optional<OrderDocument> orderDocument = this.orderMongoRepository.findById(id);
+        return orderDocument.map(OrderMongoDbMapper::documentToDomain);
     }
 }
