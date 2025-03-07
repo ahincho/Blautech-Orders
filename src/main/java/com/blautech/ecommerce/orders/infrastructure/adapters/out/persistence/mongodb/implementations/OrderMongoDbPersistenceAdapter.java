@@ -8,6 +8,8 @@ import com.blautech.ecommerce.orders.infrastructure.adapters.out.persistence.mon
 import com.blautech.ecommerce.orders.infrastructure.adapters.out.persistence.mongodb.mappers.OrderMongoDbMapper;
 import com.blautech.ecommerce.orders.infrastructure.adapters.out.persistence.mongodb.repositories.OrderMongoRepository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,7 +30,9 @@ public class OrderMongoDbPersistenceAdapter implements OrderPersistencePort {
     }
     @Override
     public PaginationResult<Order> findOrders(OrderFilters orderFilters) {
-        return null;
+        Pageable pageable = OrderMongoDbMapper.domainPageToEntityPage(orderFilters);
+        Page<OrderDocument> orderDocuments = this.orderMongoRepository.findAll(pageable);
+        return OrderMongoDbMapper.entityPageToDomainPage(orderDocuments);
     }
     @Override
     public Optional<Order> findOneOrderById(String id) {

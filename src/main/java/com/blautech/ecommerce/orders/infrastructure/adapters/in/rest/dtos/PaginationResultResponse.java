@@ -1,4 +1,4 @@
-package com.blautech.ecommerce.orders.domain.models;
+package com.blautech.ecommerce.orders.infrastructure.adapters.in.rest.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,11 +11,11 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PaginationResult<T> {
+public class PaginationResultResponse<T> {
     private Long totalItems;
-    private Integer totalPages;
+    private Long totalPages;
     private Integer currentPage;
     private Integer pageSize;
-    private Boolean hasNextPage;
+    private Boolean hastNextPage;
     private List<T> items;
 }
