@@ -1,4 +1,4 @@
-package com.blautech.ecommerce.orders.domain.models;
+package com.blautech.ecommerce.orders.infrastructure.adapters.in.rest.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class User {
+public class ProductResponse {
     @EqualsAndHashCode.Include
-    private Long id;
-    private String firstname;
-    private String lastname;
+    private Integer id;
+    private String name;
+    private Double price;
 }
