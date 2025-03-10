@@ -1,11 +1,10 @@
-package com.blautech.ecommerce.orders.domain.models;
+package com.blautech.ecommerce.orders.infrastructure.adapters.in.rest.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -15,12 +14,10 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Order {
-    @EqualsAndHashCode.Include
+public class OrderResponse {
     private String id;
-    private Long userId;
-    private Set<Detail> details;
+    private UserResponse user;
+    private Set<DetailResponse> details;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime createdAt;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
